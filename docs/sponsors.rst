@@ -1,0 +1,6 @@
+.. _sponsors
+
+Sponsors
+=================
+
+Blah

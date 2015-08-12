@@ -8,22 +8,55 @@ Welcome to IXP Manager
 
 **NB: This is a DRAFT WORK IN PROGRESS FOR THE AS YET BETA AND UNRELEASED V4 of IXP MANAGER. IT IS NOT FOR PUBLIC CONSUMPTION!**
 
-IXP Manager is a complete and fully-featured application which will allow IXPs 
+IXP Manager is a complete and fully-featured application which will allow IXPs
 to manage their infrastructure and customers.
 
-Contents:
+
+The main documentation for the site is organized into a couple sections:
+
+* :ref:`user-docs`
+* :ref:`feature-docs`
+* :ref:`about-docs`
+
+Information about development is also available:
+
+* :ref:`dev-docs`
+
+.. _user-docs:
 
 .. toctree::
    :maxdepth: 2
+   :caption: User Documentation
 
-   about
    install
 
 
-Indices and tables
-==================
+.. _feature-docs:
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Feature Documentation
 
+   features/*
+
+
+.. _dev-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :glob:
+   :caption: Developer Documentation
+
+   dev/*
+
+
+.. _about-docs:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: About IXP Manager
+
+   about
+   sponsors
+   talks
