@@ -60,3 +60,4 @@ Information about development is also available:
    about
    sponsors
    talks
+   commercial-support

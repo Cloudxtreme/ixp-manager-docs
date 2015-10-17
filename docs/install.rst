@@ -1,4 +1,4 @@
-.. _installing-ixp-manager
+.. _installing-ixp-manager:
 
 Installation
 ============

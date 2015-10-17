@@ -1,4 +1,4 @@
-.. _sponsors
+.. _sponsors:
 
 Sponsors
 =================
