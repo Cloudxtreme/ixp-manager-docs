@@ -24,7 +24,8 @@ If you want to get IXP Manager with Vagrant up and running quickly, follow these
      git checkout v4
 
 4. It's best to run ``composer update`` now as you'll require your GitHub login details to get past GitHub's rate
-limits. See `Composer's install instructions <https://getcomposer.org/download/>`_ if you don't have it.
+limits. See `Composer's install instructions <https://getcomposer.org/download/>`_ if you don't have it. There may
+be a database-related error which can safely be ignored.
 
    ::
 
@@ -65,4 +66,4 @@ Database Details
 
 Spinning up Vagrant in the above manner loads a sample database from ``ixpmanager/database/vagrant-base.sql``. If you
 have a preferred development database, place a bzip'd copy of it at ``ixpmanager/ixpmanager-preferred.sql.bz2`` before
-step 5 above. 
+step 5 above.
