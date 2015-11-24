@@ -23,7 +23,7 @@ If you want to get IXP Manager with Vagrant up and running quickly, follow these
      cd ixpmanager
      git checkout v4
 
-4. It's best to run ``composer update`` now as you'll require your GitHub login details to get past GitHub's rate
+4. The following is optional but recommended if you can as you may require your GitHub login details to get past GitHub's rate
 limits. See `Composer's install instructions <https://getcomposer.org/download/>`_ if you don't have it. There may
 be a database-related error which can safely be ignored.
 
