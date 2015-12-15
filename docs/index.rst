@@ -29,6 +29,7 @@ Information about development is also available:
    :caption: User Documentation
 
    install
+   upgrade-from-v3
 
 
 .. _feature-docs:

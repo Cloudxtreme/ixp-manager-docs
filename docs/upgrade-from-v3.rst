@@ -1,12 +1,16 @@
 .. upgrade-from-v3:
 
+Upgrade from V3
+===============
 
 If you are using IXP Manager v3, please note that there is no in place upgrade path for v4. V4 must be installed
-in parallel / in place of your v3 versoin. When you complete the installation of v4, you can then point Apache
+in parallel / in place of your v3 version. When you complete the installation of v4, you can then point Apache
 to the new v4 directory (or just move v3 out of the way and replace it with v4).
 
-It is the intention of the authors to provide a step by step guide for this when we actually assist a non-INEX
-installation on this upgrade (INEX is already running v4).
+**This documentation was written when v3 was the master branch and v4 was in its own development branch.
+Ensure this is still the case as you follow these instructions!**
+
+**THESE ARE DRAFT NOTES FROM A TEST UPGRADE. THESE WILL BE FLESHED OUT SOON.**
 
 
 Duplicating the Database
@@ -94,3 +98,5 @@ Here are some hints on what you might want to set:
 ``config/identity.php``
   Copy ``config/identity.php.dist`` to ``config/identity.php`` and edit for your IXP *(essentially copy
   from your v3 application/configs/application.ini)*.
+
+``configs/mail.php``
