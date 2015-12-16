@@ -67,6 +67,9 @@ And then run:
 Initial Configuration Tasks
 ---------------------------
 
+New Local Settings / Configuration (Laravel)
+++++++++++++++++++++++++++++++++++++++++++++
+
 As v4 is a version in migration from older libraries like Zend Framework to Laravel, we need to do a bit of setup
 for both frameworks. First Laravel: we'll essential set defaults in ``$IXPROOT/.env`` which will be used by files in
 ``$IXPROOT/config``. Feel free to look at those files and add ``.env`` parameters to suit your own environment.
@@ -105,3 +108,96 @@ Here are some hints on what you might want to set:
 
 ``config/mail.php``
   Set appropriate options for mail relay. Specifically ``MAIL_DRIVER``, ``MAIL_HOST`` and ``MAIL_PORT``.
+
+Migrate Old Zend Framework Settings
++++++++++++++++++++++++++++++++++++
+
+Copy your IXP v3 `application/configs/application.ini` file to your new v4 `application/configs` and edit as follows:
+
+1. Change the database name:
+
+::
+
+  -resources.doctrine2.connection.options.dbname   = 'ixp'
+  +resources.doctrine2.connection.options.dbname   = 'ixp4'
+
+2. Change paths as follows:
+
+::
+
+  -includePaths.osssnmp    = APPLICATION_PATH "/../library/OSS_SNMP.git"
+  -includePaths.osslibrary = APPLICATION_PATH "/../library/OSS-Framework.git"
+  +includePaths.osslibrary = APPLICATION_PATH "/../vendor/opensolutions/oss-framework/src/"
+
+  -pluginPaths.OSS_Resource = APPLICATION_PATH "/../library/OSS-Framework.git/OSS/Resource"
+  +pluginPaths.OSS_Resource = APPLICATION_PATH "/../vendor/opensolutions/oss-framework/src/OSS/Resource"
+
+  -resources.smarty.plugins[] = APPLICATION_PATH "/../library/OSS-Framework.git/OSS/Smarty/functions"
+  -resources.smarty.plugins[] = APPLICATION_PATH "/../library/Smarty/plugins"
+  -resources.smarty.plugins[] = APPLICATION_PATH "/../library/Smarty/sysplugins"
+  +resources.smarty.plugins[] = APPLICATION_PATH "/../vendor/opensolutions/oss-framework/src/OSS/Smarty/functions"
+  +resources.smarty.plugins[] = APPLICATION_PATH "/../vendor/smarty/smarty/libs/plugins"
+  +resources.smarty.plugins[] = APPLICATION_PATH "/../vendor/smarty/smarty/libs/sysplugins"
+
+3. Change Doctrine2 options as follows:
+
+::
+
+  -resources.doctrine2cache.path               = "/usr/share/php/Doctrine/ORM"
+  -resources.doctrine2cache.autoload_method    = "pear"
+  +resources.doctrine2cache.autoload_method    = "composer"
+  +resources.doctrine2cache.namespace          = 'ixp4'
+
+  -resources.doctrine2.models_path        = APPLICATION_PATH
+  -resources.doctrine2.proxies_path       = APPLICATION_PATH "/Proxies"
+  -resources.doctrine2.repositories_path  = APPLICATION_PATH
+  -resources.doctrine2.xml_schema_path    = APPLICATION_PATH "/../doctrine/schema"
+  +resources.doctrine2.models_path        = APPLICATION_PATH "/../database"
+  +resources.doctrine2.proxies_path       = APPLICATION_PATH "/../database/Proxies"
+  +resources.doctrine2.repositories_path  = APPLICATION_PATH "/../database"
+  +resources.doctrine2.xml_schema_path    = APPLICATION_PATH "/../database/xml"
+
+Update the Database Schema
+++++++++++++++++++++++++++
+
+View the required changes with:
+
+::
+
+  ./artisan d2b:schema:update --sql
+
+And apply with:
+
+::
+
+  ./artisan d2b:schema:update --commit
+
+
+
+Apache
+++++++
+
+::
+
+  Alias /ixp4 /srv/ixp4/public
+  <Directory /srv/ixp4/public>
+      Options FollowSymLinks
+      AllowOverride None
+      Require all granted
+
+      SetEnv APPLICATION_ENV production
+
+      RewriteEngine On
+      RewriteCond %{REQUEST_FILENAME} -s [OR]
+      RewriteCond %{REQUEST_FILENAME} -l [OR]
+      RewriteCond %{REQUEST_FILENAME} -d
+      RewriteRule ^.*$ - [NC,L]
+      RewriteRule ^.*$ /ixp4/index.php [NC,L]
+</Directory>
+
+File System Permissions
++++++++++++++++++++++++
+
+::
+
+  chown -R www-data: var/ storage/ database/Proxies
