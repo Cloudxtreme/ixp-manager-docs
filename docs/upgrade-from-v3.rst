@@ -1,5 +1,7 @@
 .. upgrade-from-v3:
 
+Upgrade from V3
+================
 
 If you are using IXP Manager v3, please note that there is no in place upgrade path for v4. V4 must be installed
 in parallel / in place of your v3 versoin. When you complete the installation of v4, you can then point Apache
@@ -94,3 +96,6 @@ Here are some hints on what you might want to set:
 ``config/identity.php``
   Copy ``config/identity.php.dist`` to ``config/identity.php`` and edit for your IXP *(essentially copy
   from your v3 application/configs/application.ini)*.
+
+``config/mail.php``
+  Set appropriate options for mail relay. Specifically ``MAIL_DRIVER``, ``MAIL_HOST`` and ``MAIL_PORT``.
