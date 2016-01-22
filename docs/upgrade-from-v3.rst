@@ -1,11 +1,7 @@
-.. upgrade-from-v3:
+.. _upgrade-from-v3:
 
 Upgrade from V3
-<<<<<<< HEAD
 ================
-=======
-===============
->>>>>>> e2c1dbc85fdfdca207934479217ee06813fd6465
 
 If you are using IXP Manager v3, please note that there is no in place upgrade path for v4. V4 must be installed
 in parallel / in place of your v3 version. When you complete the installation of v4, you can then point Apache
@@ -37,6 +33,8 @@ Get the IXP Manager Source
 --------------------------
 
 The code for IXP Manager is maintained on GitHub and the canonical repositorying is `inex/IXP-Manager`_.
+
+.. _inex/IXP-Manager: https://github.com/inex/IXP-Manager
 
 Log into the server where you wish to install IXP Manager. Move to the directory where you wish to store the source.
 Note that it should not be checked out into any web exposed directory (e.g. do not checkout to ``/var/www``). In my case,
@@ -164,13 +162,13 @@ View the required changes with:
 
 ::
 
-  ./artisan d2b:schema:update --sql
+  ./artisan doctrine:schema:update --sql
 
 And apply with:
 
 ::
 
-  ./artisan d2b:schema:update --commit
+  ./artisan doctrine:schema:update --commit
 
 
 
@@ -193,11 +191,11 @@ Apache
       RewriteCond %{REQUEST_FILENAME} -d
       RewriteRule ^.*$ - [NC,L]
       RewriteRule ^.*$ /ixp4/index.php [NC,L]
-</Directory>
+  </Directory>
 
 File System Permissions
 +++++++++++++++++++++++
 
 ::
 
-  chown -R www-data: var/ storage/ database/Proxies
+  chown -R www-data: var/ storage/ bootstrap/cache
