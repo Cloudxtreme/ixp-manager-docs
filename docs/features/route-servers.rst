@@ -1,4 +1,4 @@
-.. _features-route-servers
+.. _features-route-servers:
 
 Route Servers
 =================

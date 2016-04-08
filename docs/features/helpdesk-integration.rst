@@ -1,4 +1,4 @@
-.. _features-helpdesk-integration
+.. _features-helpdesk-integration:
 
 Helpdesk Integration
 ======================
