@@ -23,7 +23,7 @@ In a typical production environment, you'd implement both MRTG and sflow to prov
 Configuration
 -------------
 
-There is only a handful of configuration options required and these can be seen with documenantion in ``config/grapher.php`` (remembering to put your own changes in ``.env``).
+There is only a handful of configuration options required and these can be seen with documentation in ``config/grapher.php`` (remember to put your own local changes in ``.env``).
 
 The only global (non-backend specific) options are:
 
